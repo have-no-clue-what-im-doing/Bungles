@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="Bungles.css">
+	<!-- <script src="Bungles.js"></script> */ --> 
+</head>
+<header>
+<title> Cincy Bungle, a site tracking how many days since last playoff win</title>
+</header>
+<body>
+<h1>  How many days since the Bengals won a playoff game? </h1>
+<div id="countupdays">
+ 
+  <p id="realdays">00</p>
+  <p class="timeRefDays">days</p>
+ </div>
+<div> 
+<p id="playoffwin" > Latest Playoff Win: January 6, 1991 at around 2:36 pm EST. </p>
+</div>
+</div>
+<div id="countup">
+  <p id="years">00</p> 
+  <p class="timeRefYears">years</p> 
+  <p id="days">00</p> 
+  <p class="timeRefDays">days</p> 
+  <p id="hours">00</p> 
+  <p class="timeRefHours">hours</p> 
+  <p id="minutes">00</p> 
+  <p class="timeRefMinutes">minutes</p> 
+  <p id="seconds">00</p> 
+  <p class="timeRefSeconds">seconds</p> 
+</div>
+ 
+<div style="text-align: center;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2vmhJf-sEeA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ </div>
+ <footer>
+ <p style="text-align: center;"> <strong> Made with tears by <a href="ManningFace.html" style="text-decoration:none; color:darkorange;">Broderic Duncan</a> </strong> </p>
+ </footer>
+ <script>
+ window.onload=function() {
+ 
+  upTime('jan,06,1991,13:36:07'); 
+};
+function upTime(countTo) {
+
+  now = new Date();
+  countTo = new Date(countTo);
+  difference = (now-countTo);
+  
+  days=Math.floor(difference/(60*60*1000*24)*1);
+  years = Math.floor(days / 365);
+  realdays=Math.floor(days);
+  
+  if (years > 1){ days = days - (years * 365)}
+  hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
+  mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+  secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+  document.getElementById('realdays').firstChild.nodeValue = realdays;
+  document.getElementById('years').firstChild.nodeValue = years;
+  document.getElementById('days').firstChild.nodeValue = days;
+  document.getElementById('hours').firstChild.nodeValue = hours;
+  document.getElementById('minutes').firstChild.nodeValue = mins;
+  document.getElementById('seconds').firstChild.nodeValue = secs;
+
+
+  clearTimeout(upTime.to);
+  upTime.to=setTimeout(function(){ upTime(countTo); },1000);
+}
+</script>
+
+
+
+
+
+</body>
+</html>
